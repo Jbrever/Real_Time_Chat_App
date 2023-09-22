@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: arial;
+}
+body{
+    height: 100vh;
+    background:radial-gradient(circle , #a6a6f8 , rgb(125, 121, 121));
+}
+.container{
+    width: 800px;
+    max-width: 70%;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% , -50%);
+    border-radius: 10px;
+    box-shadow: 10px -10px 20px black;
+}
+.container .header{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(196, 193, 199);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.container .header .icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+.container .header h1{
+    text-transform: capitalize;
+    font-size: 30px;
+}
+.container .chatBox{
+    height: 500px;
+    margin: 0 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: auto;
+}
+.container .chatBox .msg .chats{
+     background-color: aqua;
+     max-width:300px;
+     padding:15px;
+     border-radius: 5px;
+}
+.container .chatBox .outgoing{
+    align-self: flex-end;
+    margin-right: 20px;
+}
+.container .chatBox .outgoing .chats {
+    background-color: rgba(136, 0, 255, 0.734);
+    color: white;
+}
+
+.container .chatBox .incoming .chats{
+    background-color: rgb(166, 169, 172);
+}
+.container .chatBox .msg h1{
+    font-size: 16px;
+    text-transform: capitalize;
+    margin:20px 0 5px 5px;
+}
+.container .textBox{
+    height: 70px;
+    width: 100%;
+    background-color: rgb(197, 196, 195);
+    border:dashed rgb(0, 0, 0) 1px;
+}
+.container .textBox form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.container .textBox form .inp{
+   width: 80%;
+   height: 40px;
+   padding-left:10px ;
+   font-size: 15px;
+}
+.container .textBox form .sendBtn{
+     width: 60px;
+     height: 40px;
+     font-size: 15px;
+     background-color: rgb(163, 80, 241);
+     border: none;
+     border: 1px solid black;
+     color: white;
+}
+.container .textBox form .sendBtn:active{
+    transform: scale(0.95);
+}
+
+.container .textBox form .sendBtn:hover{
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+
+
