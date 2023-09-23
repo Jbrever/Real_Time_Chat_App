@@ -1,82 +1,71 @@
 //socket.io
-const socket = io();   //step 5
+const socket = io(); //step 5
 
-let chatBox = document.querySelector('.chatBox')
+let chatBox = document.querySelector(".chatBox");
 
-let out_in = document.createElement('div')
+let textInp = document.querySelector(".inp");
 
-chatBox.appendChild(out_in)
+let sendBtn = document.querySelector(".sendBtn");
 
-let textInp = document.querySelector('.inp')
-
-let sendBtn = document.querySelector('.sendBtn')
-
-let userName ;
+let userName;
 
 //take username
 
-while(userName == null){
-
-    userName = prompt("please enter your name")
-
+while (userName == null) {
+  userName = prompt("please enter your name");
 }
 
 //Append Data And Name
 
-const appendData = (msg , type) => {
+const appendData = (msg, type) => {
+  let out_in = document.createElement("div");
 
-    out_in.classList.add(`${type}` , 'msg' )
+  chatBox.appendChild(out_in);
 
-    let msgDiv = document.createElement('div')
+  out_in.classList.add(`${type}`, "msg");
 
-    let user = document.createElement('h1')  
-   
-    user.innerText = msg.name   
-   
-    msgDiv.classList.add('chats')
-   
-    msgDiv.innerText = msg.input
-   
-    out_in.appendChild(user)
-   
-    out_in.appendChild(msgDiv)
+  let msgDiv = document.createElement("div");
 
-}
+  let user = document.createElement("h1");
 
-const sendMsg =(inputval)=>{
+  user.innerText = msg.name;
 
-    if(inputval == ''){
+  msgDiv.classList.add("chats");
 
-        return -1;
+  msgDiv.innerText = msg.input;
 
-    }
+  out_in.appendChild(user);
 
-    let msg ={
+  out_in.appendChild(msgDiv);
+};
 
-        input:inputval,
+const sendMsg = (inputval) => {
+  if (inputval == "") {
+    return -1;
+  }
 
-        name:userName
+  let msg = {
+    input: inputval,
 
-    }
+    name: userName,
+  };
 
-    socket.emit('msg',msg)  // send msg to server
+  socket.emit("msg", msg); // send msg to server
 
-    appendData(msg , 'outgoing')
+  appendData(msg, "outgoing");
+};
 
-}
+sendBtn.addEventListener("click", (e) => {
+  const inpValue = textInp.value;
 
-sendBtn.addEventListener('click',(e)=>{
+  e.preventDefault();
 
-    const inpValue = textInp.value;
+  textInp.value = "";
 
-    e.preventDefault()
+  sendMsg(inpValue);
+});
 
-    textInp.value = ''
-
-    sendMsg(inpValue)
-
-})
-
-socket.on('msg',(msg)=>{          //step 6th msg recive from server.js
-    appendData(msg,'incoming')
-})
+socket.on("msg", (msg) => {
+  //step 6th msg recive from server.js
+  appendData(msg, "incoming");
+});

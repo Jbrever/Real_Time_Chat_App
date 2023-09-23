@@ -63,7 +63,9 @@ body{
     background-color: rgba(136, 0, 255, 0.734);
     color: white;
 }
-
+.container .chatBox .incoming{
+   align-self: flex-start;
+}
 .container .chatBox .incoming .chats{
     background-color: rgb(166, 169, 172);
 }
